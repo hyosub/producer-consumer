@@ -155,3 +155,16 @@
 
 
 ## 다. 실행 방법
+
+- Maven package 명령어 실행하여 jar 빌드 수행
+
+```
+    ./mvn clean package -P default
+```
+
+- target 디렉토리로 이동하여 jar 실행
+
+```
+    cd target
+    java -jar WordClassfier-${project.version}.jar 단어파일위치 결과파일저장디렉토리위치 파티션개수(숫자)
+```
