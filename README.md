@@ -178,7 +178,7 @@
 1. 에러가 발생했을 경우 Retry 수행이 추가 요구사항으로 도출된다면 어떻게 개선할 것인지?
 
     * 수행 도중 오류가 발생한 업무는 로그를 남기고 무시하는 것으로 처리되고 있음.
-    * 현재는 Producer, Consumer의 업무 생성 및 수행 시 파일 처리 IOException와 BlockingQueue에 할당할 때에만 오류가 발생가능.
+        * 현재는 Producer, Consumer의 업무 수행 도중 파일 입출력 시 IOException, BlockingQueue에 업무 할당 시 InterruptedException 오류 발생가능.
         
 2. 업무 객체가 처리되는 속도보다 쌓이는 속도가 빠를 경우의 처리는 어떻게 개선할 것인지?
 
