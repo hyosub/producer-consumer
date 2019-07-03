@@ -168,3 +168,20 @@
     cd target
     java -jar WordClassfier-${project.version}.jar 단어파일위치 결과파일저장디렉토리위치 파티션개수(숫자)
 ```
+
+
+## 라. 추가적으로 개선할 사항
+
+이하와 같은 문제가 존재하지만, 개발을 진행한 시간이 짧아 모두 구현할 수 없어서 추후 개선을 위하여 기록을 남김
+
+
+1. 에러가 발생했을 경우 Retry 수행이 추가 요구사항으로 도출된다면 어떻게 개선할 것인지?
+
+    * 수행 도중 오류가 발생한 업무는 로그를 남기고 무시하는 것으로 처리되고 있음.
+    * 현재는 Producer, Consumer의 업무 생성 및 수행 시 파일 처리 IOException와 BlockingQueue에 할당할 때에만 오류가 발생가능.
+        
+2. 업무 객체가 처리되는 속도보다 쌓이는 속도가 빠를 경우의 처리는 어떻게 개선할 것인지?
+
+    * BlockingQueue의 구현체로 LinkedBlockingQueue를 사용하고 있으나, capacity를 Integer.MAX_VALUE로 사용 중
+        * 파일 입출력이 Consumer에서 진행되므로 처리가 당연히 느릴 수 밖에 없음.
+        * 원본 단어 파일이 엄청 큰 경우 Queue에 과도하게 업무 객체가 쌓일 가능성 높음. (OutOfMemory 문제)
