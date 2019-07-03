@@ -1,0 +1,16 @@
+# Android Studio
+.idea/
+*.iml
+
+# Eclipse
+.settings/
+
+# Generated files
+bin/
+gen/
+
+# Build
+target/
+
+# Output Files
+src/main/resources/out/

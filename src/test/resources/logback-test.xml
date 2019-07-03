@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <property name="LOG_HOME" value="./logs" />
+    <!-- Appenders Definition -->
+    <!-- Rolling
+    <appender name="fileRollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/wordclassifier_%d{yyyyMMdd}_%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>100</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} |-%level [%thread][%c{10}][%method] %msg%n</pattern>
+        </encoder>
+    </appender>
+    -->
+
+    <!-- Daily Rolling
+    <appender name="dailyFileRollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/wordclassifier_%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} |-%level [%thread][%c{10}][%method] %msg%n</pattern>
+        </encoder>
+    </appender>
+    -->
+
+    <!-- Console -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} |-%level [%thread][%c{10}][%method] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger Setting -->
+    <logger name="io.hyosub.wordclassifier">
+        <level value="debug" />
+    </logger>
+
+    <root level="debug">
+        <!-- 로그 파일 롤링이 필요할 없을 경우 주석 (기본 생성 위치는 classpath:logs)
+        <appender-ref ref="fileRollingAppender" />
+        <appender-ref ref="dailyFileRollingAppender" />
+        -->
+        <appender-ref ref="consoleAppender" />
+    </root>
+</configuration>
